@@ -3,7 +3,6 @@ var router = express.Router();
 
 const ctrlMain = require('../controllers/restaurant')
 
-/* GET home page. */
-router.get('/', ctrlMain.index);
+router.get('/menu', ctrlMain.getMenus);
 
 module.exports = router;

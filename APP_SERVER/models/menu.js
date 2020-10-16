@@ -16,5 +16,5 @@ var menuSchema = new mongoose.Schema({
     avg_rating: {type: Number}
 });
 
-mongoose.model('Menu', menuSchema);
+module.exports  = mongoose.model('Menu', menuSchema, 'menus');
 
