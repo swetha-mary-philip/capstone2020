@@ -4,7 +4,7 @@ var reviewSchema = new mongoose.Schema({
     reviewername:{type:String, required:true},
     reviewcomment:{type:String, required:true, minlength:10, maxlength:500},
     rating :{type:Number, required: true},
-    menu_item_id: { type : mongoose.Schema.Types.ObjectId, ref : 'Menu'},
+    orderid: { type : mongoose.Schema.Types.ObjectId, ref : 'Menu'},
     reviewdate : {type:Date}
 });
 

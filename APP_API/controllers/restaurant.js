@@ -277,7 +277,7 @@ const AddReview = function(req,res){
         reviewername :req.body.reviewername,
         reviewcomment: req.body.reviewcomment,
         rating:req.body.rating,
-        recipe: moongose.Types.ObjectId(req.params.foodid),
+        orderid: moongose.Types.ObjectId(req.params.orderid),
         reviewdate:  Date.now(),
     }, 
     (err,foodData) =>{
