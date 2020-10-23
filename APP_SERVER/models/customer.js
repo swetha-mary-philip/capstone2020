@@ -14,7 +14,7 @@ var customerSchema = new mongoose.Schema({
     firstname : {type: String, required: true, minlength: 3},
     lastname : {type: String, minlength: 1},
     email : {type: String},
-    phone : {type: String, maxlength: 12},
+    phone : {type: String, maxlength: 13},
     address: [addressList],
     createdate: {type:Date},
     modifieddate: {type:Date}

@@ -8,6 +8,9 @@ router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 
 //CUSTOMER
+router.get('/customer/:custid', ctrlMain.getcustomer);
+router.post('/customer', ctrlMain.createcustomer);
+router.put('/customer/:custid', ctrlMain.updatecustomer);
 
 
 // ORDERS
