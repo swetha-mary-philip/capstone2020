@@ -140,5 +140,27 @@ const getsingleorder = function (req, res){
 
 };
 
+const createorder = function (req, res){
+
+    Order.create({
+        status :req.body.status,
+        order_type :req.body.order_type,
+        special_instructions :req.body.special_instructions,
+        orderdate: Date.now(),
+        payment:req.body.payment,
+        amount:req.body.amount,
+        customer_id: moongose.Types.ObjectId(req.body.customer_id),
+        order_details: req.body.order_details     
+    }, 
+    (err,orderData) =>{
+        if(err){
+            res.status(400).json(err);
+        }
+        else{
+            res.status(201).json(orderData);
+        }
+    })
+};
+
 module.exports = {getMenus,getavailability,getreservations, 
-                    getorders,getsingleorder, getsinglemenu, cancelorder};
+                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder};
