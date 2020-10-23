@@ -40,6 +40,72 @@ const getsinglemenu = function (req, res){
     });
 
 };
+const createmenu = function(req,res){
+  console.log(req.body);
+
+    Menu.Create({
+        name :req.body.name,
+        description: req.body.description,
+        imageurl:req.body.imageurl,
+        price:req.body.price,
+        createdate:Date.now(),
+        modifieddate:Date.now(),
+        avg_rating:req.body.avg_rating,
+        ingredients: req.body.ingredients     
+
+    }, 
+    (err,foodData) =>{
+        if(err){
+            res.status(400).json(err);
+        }
+        else{
+            res.status(201).json(foodData);
+        }
+    })
+
+}
+
+const updatemenu = function (req, res){
+    console.log(req.params.custid);
+    if(!req.params.menuid){
+        res
+        .status(404)
+        .json({"message": "not found, Menuid is required"});
+        return;
+    }
+    Menu.findById(req.params.menuid)
+    .exec((err, menudata) => {
+        if(!menudata){
+            res
+            .json(404)
+            .status({"message": "Menuid not found"});
+            return;
+        }
+        else if(err){
+            res
+            .status(400)
+            .json(err);
+            return;
+        }
+        
+        
+        menudata.name =req.body.name,
+        menudata.description=req.body.description,
+        menudata.imageurl=req.body.imageurl,
+        menudata.price=req.body.price,
+        menudata.modifieddate=Date.now(),
+        menudata.avg_rating=req.body.avg_rating,
+        menudata.ingredients=req.body.ingredients,        
+        menudata.save((err,menudata) =>{
+            if(err){
+                res.status(404).json(err);
+            }
+            else{
+                res.status(200).json(menudata);
+            }
+        })
+    })
+};
 
 
 //CUSTOMER
@@ -293,5 +359,5 @@ const AddReview = function(req,res){
 
 
 module.exports = {getMenus,getavailability,getreservations, createcustomer, updatecustomer,getcustomer,
-                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview};
+                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,createmenu,updatemenu};
 
