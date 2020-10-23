@@ -5,6 +5,7 @@ const Menu = moongose.model("Menu");
 const Order = moongose.model("Order");
 const ReservationSlots = moongose.model("ReservationSlot");
 const Reservation= moongose.model("Reservation");
+const Review = moongose.model("Review");
 
 //MENUS
 const getMenus = function (req, res){
@@ -162,5 +163,53 @@ const createorder = function (req, res){
     })
 };
 
+//Review 
+
+const getSingleReview = function(req,res){
+
+    let id = req.params.foodid;
+  
+    Review.aggregate([
+        {$match : {recipe : moongose.Types.ObjectId(id)}},
+        ]).exec(function(err, fooddata) {
+        if(err){
+            res
+            .status(404)
+            .json(err);
+            return;
+        }
+        
+        res
+        .status(200)
+        .json(fooddata);
+    });
+};
+
+const AddReview = function(req,res){
+  
+    if(!req.params.foodid){
+        res
+        .status(404)
+        .json({"message": "not found, foodid is required"});
+        return;
+    }
+
+    Review.create({
+        reviewername :req.body.reviewername,
+        reviewcomment: req.body.reviewcomment,
+        rating:req.body.rating,
+        recipe: moongose.Types.ObjectId(req.params.foodid),
+        reviewdate:  Date.now(),
+    }, 
+    (err,foodData) =>{
+        if(err){
+            res.status(400).json(err);
+        }
+        else{
+            res.status(201).json(foodData);
+        }
+    })
+
+}
 module.exports = {getMenus,getavailability,getreservations, 
-                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder};
+                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getSingleReview,AddReview};
