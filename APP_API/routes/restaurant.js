@@ -27,9 +27,8 @@ router.get('/reservations', ctrlMain.getreservations);
 
 
 //REVIEW
-
-router.get('/reviews/:foodid',  ctrlMain.getSingleReview);
-router.post('/reviews/:foodid', ctrlMain.AddReview);
+router.get('/reviews',  ctrlMain.getreviews);
+router.post('/reviews/:orderid', ctrlMain.AddReview);
 
 
 module.exports = router;
