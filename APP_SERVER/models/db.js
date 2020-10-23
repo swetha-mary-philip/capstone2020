@@ -1,8 +1,10 @@
 var mongoose = require("mongoose");
 require('./menu');
 require('./order');
-//require('./reviews');
-//require('./customers');
+require('./reservationslot');
+require('./review');
+require('./customer');
+require('./reservation');
 
 var dburi = "mongodb+srv://sphilip5993:swetha@cluster0-vcoij.mongodb.net/restaurant?retryWrites=true&w=majority";
 
