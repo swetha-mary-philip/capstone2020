@@ -7,6 +7,9 @@ const ctrlMain = require('../controllers/restaurant')
 router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 
+//CUSTOMER
+//USER
+
 // ORDERS
 router.get('/order', ctrlMain.getorders);
 //router.post('/order', ctrlMain.createorder);

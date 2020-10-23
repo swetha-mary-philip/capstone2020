@@ -9,11 +9,6 @@ var addressList = new mongoose.Schema({
     country : {type: String, required: true}
 });
 
-var loginList = new mongoose.Schema({
-    username : {type: String, required: true},
-    password : {type: String, required: true}
-});
-
 
 var customerSchema = new mongoose.Schema({
     firstname : {type: String, required: true, minlength: 3},
@@ -21,7 +16,6 @@ var customerSchema = new mongoose.Schema({
     email : {type: String},
     phone : {type: String, maxlength: 12},
     address: [addressList],
-    login: [loginList],
     createdate: {type:Date},
     modifieddate: {type:Date}
 });
