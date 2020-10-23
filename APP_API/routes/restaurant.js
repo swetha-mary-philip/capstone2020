@@ -10,6 +10,7 @@ router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 //CUSTOMER
 
 
+
 // ORDERS
 router.get('/order', ctrlMain.getorders);
 router.post('/orders', ctrlMain.createorder);
@@ -20,5 +21,12 @@ router.put('/order/:orderid', ctrlMain.cancelorder);
 //RESERVATION
 router.get('/reservationslots', ctrlMain.getavailability);
 router.get('/reservations', ctrlMain.getreservations);
+
+
+//REVIEW
+
+router.get('/reviews/:foodid',  ctrlMain.getSingleReview);
+router.post('/reviews/:foodid', ctrlMain.AddReview);
+
 
 module.exports = router;
