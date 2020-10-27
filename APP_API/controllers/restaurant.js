@@ -40,10 +40,12 @@ const getsinglemenu = function (req, res){
     });
 
 };
+
+
 const createmenu = function(req,res){
   console.log(req.body);
 
-    Menu.Create({
+    Menu.create({
         name :req.body.name,
         description: req.body.description,
         imageurl:req.body.imageurl,
