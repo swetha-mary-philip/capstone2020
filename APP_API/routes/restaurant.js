@@ -6,6 +6,7 @@ const ctrlMain = require('../controllers/restaurant')
 //MENU
 router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
+router.get('/menu/substance/:substance', ctrlMain.getfilteredmenu);
 router.post('/menu',ctrlMain.createmenu);
 router.put('/menu/:menuid', ctrlMain.updatemenu);
 router.delete('/menu/:menuid', ctrlMain.deletemenu);

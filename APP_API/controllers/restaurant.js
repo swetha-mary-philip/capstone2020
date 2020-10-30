@@ -131,7 +131,22 @@ const deletemenu = function (req, res){
             .status(404)
             .json({"message": "no menuId"});
         }
-    };
+};
+
+const getfilteredmenu = function (req, res){
+
+    let substance = req.params.substance;
+    
+    Menu.find( { 'ingredients.name' : {'$ne': substance} }).exec(function(err,menudata){
+        if(err){
+            res.status(404).json(err);
+            return;
+        }
+        res.status(200).json(menudata);
+
+    })
+
+};
 
 //CUSTOMER
 const createcustomer = function (req, res){
@@ -441,6 +456,6 @@ const AddReview = function(req,res){
 
 
 module.exports = {getMenus,getavailability,createavailability,updateavailability,getreservations, 
-                    createcustomer, updatecustomer,getcustomer, deletemenu,
+                    createcustomer, updatecustomer,getcustomer, deletemenu, getfilteredmenu,
                     getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,createmenu,updatemenu};
 
