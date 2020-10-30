@@ -68,7 +68,7 @@ const createmenu = function(req,res){
 }
 
 const updatemenu = function (req, res){
-    console.log(req.params.custid);
+    console.log(req.params.menuid);
     if(!req.params.menuid){
         res
         .status(404)

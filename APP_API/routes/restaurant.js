@@ -8,6 +8,7 @@ router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 router.post('/menu',ctrlMain.createmenu);
 router.put('/menu/:menuid', ctrlMain.updatemenu);
+//delete menu -- todo
 
 //CUSTOMER
 router.get('/customer/:custid', ctrlMain.getcustomer);
@@ -27,6 +28,8 @@ router.put('/order/:orderid', ctrlMain.cancelorder);
 router.get('/reservationslots', ctrlMain.getavailability);
 router.post('/reservationslots', ctrlMain.createavailability);
 router.put('/reservationslots/:reservationslotid', ctrlMain.updateavailability);
+
+
 router.get('/reservations', ctrlMain.getreservations);
 
 
