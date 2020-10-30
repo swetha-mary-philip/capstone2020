@@ -208,6 +208,63 @@ const getavailability = function (req, res){
     })
 };
 
+
+const createavailability = function(req,res){
+    console.log(req.body);
+  
+    ReservationSlots.create({
+        bookingslots:req.body.bookingslots,
+        reservationdate: req.body.reservationdate,
+        }, 
+      (err,menudata) =>{
+          if(err){
+              res.status(400).json(err);
+          }
+          else{
+              res.status(201).json(menudata);
+          }
+      })
+  
+  };
+
+const updateavailability = function (req, res){
+    if(!req.params.reservationslotid){
+        res
+        .status(404)
+        .json({"message": "not found, reservationslotid is required"});
+        return;
+    }
+    ReservationSlots.findById(req.params.reservationslotid)
+    .exec((err, slotdata) => {
+        if(!slotdata){
+            res
+            .json(404)
+            .status({"message": "reservationid not found"});
+            return;
+        }
+        else if(err){
+            res
+            .status(400)
+            .json(err);
+            return;
+        }
+        
+        
+        slotdata.bookingslots =req.body.bookingslots,
+        slotdata.reservationdate=req.body.reservationdate,       
+        slotdata.save((err,slotdata) =>{
+            if(err){
+                res.status(404).json(err);
+            }
+            else{
+                res.status(200).json(slotdata);
+            }
+        })
+    })
+};
+
+
+  
 const getreservations = function (req, res){
     
     Reservation.find().exec(function(err,data){
@@ -360,6 +417,6 @@ const AddReview = function(req,res){
 }
 
 
-module.exports = {getMenus,getavailability,getreservations, createcustomer, updatecustomer,getcustomer,
+module.exports = {getMenus,getavailability,createavailability,updateavailability,getreservations, createcustomer, updatecustomer,getcustomer,
                     getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,createmenu,updatemenu};
 

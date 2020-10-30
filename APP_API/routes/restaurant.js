@@ -25,6 +25,8 @@ router.put('/order/:orderid', ctrlMain.cancelorder);
 
 //RESERVATION
 router.get('/reservationslots', ctrlMain.getavailability);
+router.post('/reservationslots', ctrlMain.createavailability);
+router.put('/reservationslots/:reservationslotid', ctrlMain.updateavailability);
 router.get('/reservations', ctrlMain.getreservations);
 
 
