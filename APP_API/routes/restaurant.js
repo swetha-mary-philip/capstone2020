@@ -8,7 +8,7 @@ router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 router.post('/menu',ctrlMain.createmenu);
 router.put('/menu/:menuid', ctrlMain.updatemenu);
-//delete menu -- todo
+router.delete('/menu/:menuid', ctrlMain.deletemenu);
 
 //CUSTOMER
 router.get('/customer/:custid', ctrlMain.getcustomer);

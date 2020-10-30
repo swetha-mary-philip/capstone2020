@@ -109,6 +109,29 @@ const updatemenu = function (req, res){
     })
 };
 
+const deletemenu = function (req, res){
+ 
+    let menuid = req.params.menuid;
+        if(menuid){
+            Menu.findByIdAndRemove(menuid)
+            .exec((err, menudata) =>{
+                if(err){
+                    res
+                    .status(404)
+                    .json(err);
+                    return;
+                }
+                res
+                .status(204)
+                .json({"message": "deleted"});    
+            })
+        }
+        else{
+            res
+            .status(404)
+            .json({"message": "no menuId"});
+        }
+    };
 
 //CUSTOMER
 const createcustomer = function (req, res){
@@ -417,6 +440,7 @@ const AddReview = function(req,res){
 }
 
 
-module.exports = {getMenus,getavailability,createavailability,updateavailability,getreservations, createcustomer, updatecustomer,getcustomer,
+module.exports = {getMenus,getavailability,createavailability,updateavailability,getreservations, 
+                    createcustomer, updatecustomer,getcustomer, deletemenu,
                     getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,createmenu,updatemenu};
 
