@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("./APP_API/routes/user"); //new addition
-const InitiateMongoServer = require("./config/db");
+const InitiateMongoServer = require('./app_server/models/db.js');
 // Initiate Mongo Server
 InitiateMongoServer();
 const app = express();
