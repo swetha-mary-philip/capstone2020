@@ -5,6 +5,7 @@ require('./reservationslot');
 require('./review');
 require('./customer');
 require('./reservation');
+require('./user');
 
 var dburi = "mongodb+srv://sphilip5993:swetha@cluster0-vcoij.mongodb.net/restaurant?retryWrites=true&w=majority";
 
