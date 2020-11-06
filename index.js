@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const user = require("./APP_API/routes/user"); //new addition
 const InitiateMongoServer = require('./app_server/models/db.js');
 // Initiate Mongo Server
-InitiateMongoServer();
+//InitiateMongoServer();
 const app = express();
 // PORT
 const PORT = process.env.PORT || 4000;
