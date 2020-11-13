@@ -8,6 +8,14 @@ require('./app_server/models/db.js');
 const apiRoute = require('./APP_API/routes/restaurant');
 var app = express();
 
+app.all('/*', function(req, res, next){
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers","*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+ })
+
+
 // view engine setup
 app.set('views', path.join(__dirname,'app_server', 'views'));
 app.set('view engine', 'pug');
