@@ -135,7 +135,10 @@ const deletemenu = function (req, res){
 
 const getfilteredmenu = function (req, res){
 
-    let substance = req.params.substance;
+    let substance = (req.params.substance);
+
+    if (substance != null)
+        substance = substance.toLowerCase();
     
     Menu.find( { 'ingredients.name' : {'$ne': substance} }).exec(function(err,menudata){
         if(err){
