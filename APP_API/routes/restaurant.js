@@ -38,5 +38,7 @@ router.get('/reservations', ctrlMain.getreservations);
 router.get('/reviews',  ctrlMain.getreviews);
 router.post('/reviews/:orderid', ctrlMain.AddReview);
 
-
+//CONTACT
+router.get('/contacts',  ctrlMain.getcontacts);
+router.post('/contacts', ctrlMain.AddContact);
 module.exports = router;

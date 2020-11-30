@@ -7,6 +7,7 @@ const ReservationSlots = moongose.model("ReservationSlot");
 const Reservation= moongose.model("Reservation");
 const Customer= moongose.model("Customer");
 const Review = moongose.model("Review");
+const Contact = moongose.model("Contact");
 
 //MENUS
 const getMenus = function (req, res){
@@ -456,9 +457,39 @@ const AddReview = function(req,res){
     })
 
 }
+const getcontacts = function (req, res){
+    
+    Contact.find().exec(function(err,data){
+        if(err){
+            res.status(404).json(err);
+            return;
+        }
+        res.status(200).json(data);
 
+    })
+};
+const AddContact = function(req,res){
+      
+    Contact.create({
+        fullname :req.body.fullname,
+        email: req.body.email,
+        subject:req.body.subject,
+        message:req.body.message
+       
+    }, 
+    (err,foodData) =>{
+        if(err){
+            res.status(400).json(err);
+        }
+        else{
+            res.status(201).json(foodData);
+        }
+    })
+
+}
 
 module.exports = {getMenus,getavailability,createavailability,updateavailability,getreservations, 
                     createcustomer, updatecustomer,getcustomer, deletemenu, getfilteredmenu,
-                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,createmenu,updatemenu};
+                    getorders,getsingleorder, getsinglemenu, cancelorder, createorder,getreviews,AddReview,
+                    createmenu,updatemenu,getcontacts,AddContact};
 
