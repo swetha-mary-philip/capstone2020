@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const auth = require('../../middleware/auth');
 
 const ctrlMain = require('../controllers/restaurant')
 
@@ -7,9 +8,9 @@ const ctrlMain = require('../controllers/restaurant')
 router.get('/menu', ctrlMain.getMenus);
 router.get('/menu/:menuid', ctrlMain.getsinglemenu);
 router.get('/menu/substance/search/:substance?', ctrlMain.getfilteredmenu);
-router.post('/menu',ctrlMain.createmenu);
-router.put('/menu/:menuid', ctrlMain.updatemenu);
-router.delete('/menu/:menuid', ctrlMain.deletemenu);
+router.post('/menu',auth,ctrlMain.createmenu);
+router.put('/menu/:menuid', auth,ctrlMain.updatemenu);
+router.delete('/menu/:menuid', auth, ctrlMain.deletemenu);
 
 //CUSTOMER
 router.get('/customer/:custid', ctrlMain.getcustomer);
